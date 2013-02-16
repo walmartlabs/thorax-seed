@@ -1,0 +1,55 @@
+{
+  "name": "base-lumbar",
+  "application": {
+    // This should match the name declared for
+    // the global object in init.js
+    "name": "Application",
+    "module": "base"
+  },
+  "modules": {
+    "base": {
+      "mixins": [
+        "thorax-dep-jquery",
+        "thorax",
+        "thorax-helper-tags",
+        "thorax-loading",
+        "thorax-ie",
+        "lumbar-loader"
+      ],
+      "scripts": [
+        "../node_modules/lumbar-loader/lumbar-loader-backbone.js",
+        "../js/init.js",
+        "../js/init-base.js",
+        "../js/model.js",
+        "../js/collection.js",
+        "../js/view.js",
+        {"module-map": true},
+        "../js/lib/bootstrap.js"
+      ],
+      "styles": [
+        "../styles/base.css",
+        "../styles/bootstrap.css"
+      ],
+      "static": [
+        {
+          "src": "../static/index.html",
+          "dest": "index.html"
+        },
+        {
+          "src": "../static/img",
+          "dest": "img"
+        }
+      ]
+    }
+  },
+  "templates": {
+    "root": "templates/",
+    "auto-include": {
+      "js/views/(.*)\\.(js|coffee)": [
+        "templates/$1.handlebars",
+        "templates/$1-item.handlebars",
+        "templates/$1-empty.handlebars"
+      ]
+    }
+  }
+}

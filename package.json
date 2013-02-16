@@ -1,0 +1,17 @@
+{
+  "name": "Application",
+  "version": "0.0.1",
+  "dependencies": {
+    "thorax": "git://github.com/walmartlabs/thorax.git",
+    "lumbar-loader": "git://github.com/walmartlabs/lumbar-loader.git"
+  },
+  "devDependencies": {
+    "grunt": "0.3.17",
+    "lumbar": "git://github.com/eastridge/lumbar.git",
+    "thorax-inspector": "git://github.com/eastridge/thorax-inspector-backend.git",
+    "open": "0.0.3"
+  },
+  "scripts": {
+    "start": "./node_modules/grunt/bin/grunt"
+  }
+}

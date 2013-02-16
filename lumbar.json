@@ -1,0 +1,15 @@
+{
+  "mixins": [
+    "node_modules/lumbar-loader",
+    "node_modules/thorax",
+    "config/base-lumbar.json"
+  ],
+  "modules": {
+  
+  },
+  "templates": {
+    "js/init.js": [
+      "templates/application.handlebars"
+    ]
+  }
+}
