@@ -5,6 +5,15 @@ module.exports = function(grunt) {
       hostname = require('os').hostname();
   
   grunt.initConfig({
+    jshint: {
+      all: [
+        'js/**/*.js',
+        '!js/lib/bootstrap.js'
+      ],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    },
     // create a static webserver
     connect: {
       server: {
@@ -13,14 +22,22 @@ module.exports = function(grunt) {
           base: publicDir,
           port: port
         }
+      },
+      'test-server': {
+        options: {
+          keepalive: true,
+          hostname: hostname,
+          base: publicDir,
+          port: 8981,
+        }
       }
     },
     lumbar: {
       // performs an initial build so when tests
       // and initial open are run, code is built
-      build: {
-        lumbarFile: lumbarFile,
-        outputDir: publicDir
+      init: {
+        build: lumbarFile,
+        output: publicDir
       },
       // a long running process that will watch
       // for updates, to include another long
@@ -28,8 +45,13 @@ module.exports = function(grunt) {
       // background: true
       watch: {
         background: false,
-        lumbarFile: lumbarFile,
-        outputDir: publicDir
+        watch: lumbarFile,
+        output: publicDir
+      },
+      // builds tests
+      test: {
+        build: 'config/test-lumbar.json',
+        output: publicDir
       }
     },
     // allows files to be opened when the
@@ -43,6 +65,15 @@ module.exports = function(grunt) {
         models: "./js/models",
         collections: "./js/collections"
       }
+    },
+
+    // test runner
+    mocha: {
+      test: {
+        options: {
+          urls: ['http://' + hostname + ':8981/test.html']
+        }
+      }
     }
   });
   
@@ -55,11 +86,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha');
+
+  grunt.registerTask('test', [
+    'lumbar:init',
+    'lumbar:test',
+    'connect:test-server',
+    'mocha:test'
+  ]);
+
   grunt.registerTask('default', [
+    'jshint',
     'thorax-inspector',
-    'lumbar:build',
-    'connect',
+    'lumbar:init',
+    'connect:server',
     'open-browser',
     'lumbar:watch'
   ]);
