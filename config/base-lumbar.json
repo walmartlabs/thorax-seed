@@ -19,7 +19,6 @@
       "scripts": [
         "../node_modules/lumbar-loader/lumbar-loader-backbone.js",
         "../js/init.js",
-        "../js/init-base.js",
         "../js/model.js",
         "../js/collection.js",
         "../js/view.js",

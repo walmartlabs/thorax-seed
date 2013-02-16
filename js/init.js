@@ -1,5 +1,6 @@
 // Create the Application object, Application.setView() will
-// place a view inside the {{layout}}
+// place a view inside the {{layout-element}} in
+// templates/application.handlebars
 var Application = window.Application = new Thorax.LayoutView({
   name: 'application'
 });
@@ -27,3 +28,9 @@ $(function() {
   Application.appendTo('body');
   Backbone.history.loadUrl();
 });
+
+// This configures our Application object with values
+// from the lumbar config, then sets it as the exported
+// value from the base module.
+_.extend(Application, module.exports);
+module.exports = Application;
