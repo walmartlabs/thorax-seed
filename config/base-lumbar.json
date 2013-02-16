@@ -27,8 +27,8 @@
         "../js/lib/bootstrap.js"
       ],
       "styles": [
-        "../styles/base.css",
-        "../styles/bootstrap.css"
+        "../stylesheets/base.css",
+        "../stylesheets/bootstrap.css"
       ],
       "static": [
         {
