@@ -1,12 +1,19 @@
 module.exports = function(grunt) {
   var port = 8000,
       publicDir = './public',
-      lumbarFile = './lumbar.json';
+      lumbarFile = './lumbar.json',
+      hostname = require('os').hostname();
   
   grunt.initConfig({
-    server: {
-      base: publicDir,
-      port: port
+    // create a static webserver
+    connect: {
+      server: {
+        options: {
+          hostname: hostname,
+          base: publicDir,
+          port: port
+        }
+      }
     },
     lumbar: {
       // performs an initial build so when tests
@@ -41,18 +48,19 @@ module.exports = function(grunt) {
   
   grunt.registerTask('open-browser', function() {
     var open = require('open');
-    open('http://' + require('os').hostname() + ':' + port);
+    open('http://' + hostname + ':' + port);
   });
   
   // load all tasks in the tasks folder
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   
   grunt.registerTask('default', [
     'thorax-inspector',
     'lumbar:build',
-    'server',
+    'connect',
     'open-browser',
     'lumbar:watch'
-  ].join(' '));
+  ]);
 };
