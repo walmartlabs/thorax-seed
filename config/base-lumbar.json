@@ -1,8 +1,6 @@
 {
   "name": "base-lumbar",
   "application": {
-    // This should match the name declared for
-    // the global object in init.js
     "name": "Application",
     "module": "base"
   },
