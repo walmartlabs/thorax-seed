@@ -81,9 +81,9 @@ module.exports = function(grunt) {
     open('http://' + hostname + ':' + port);
   });
   
-  // load all tasks in the tasks folder
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
+  grunt.loadNpmTasks('thorax');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha');
