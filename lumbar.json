@@ -5,11 +5,6 @@
     "config/base-lumbar.json"
   ],
   "modules": {
-    "a": {
-      "scripts": [
-        "js/a.js"
-      ]
-    }
   },
   "templates": {
     "js/init.js": [
