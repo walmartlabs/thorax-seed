@@ -50,11 +50,7 @@ function ThoraxGenerator(options) {
 }
 
 ThoraxGenerator.prototype.module = function(name) {
-  this.lumbarJSON.modules[name] = {
-    routes: {},
-    scripts: [],
-    styles: []
-  };
+  this.lumbarJSON.modules[name] = defaultModuleJSON();
   this.spec(name);
   this.style(name, name);
   this.router(name, name);
@@ -87,28 +83,42 @@ ThoraxGenerator.prototype.view = function(name) {
   this.write(target, this.render('view.handlebars', {
     name: name
   }));
+  this.template(name);
 };
 
 ThoraxGenerator.prototype['collection-view'] = function(name) {
   var target = path.join(this.paths.views, name + '.' + this.language),
       moduleName = name.split('/').shift();
   addScript.call(this, moduleName, target);
+  this.write(target, this.render('collection-view.handlebars', {
+    name: name
+  }));
+  this.template(name);
+  this.template(name + '-item');
+  this.template(name + '-empty');
 };
 
 ThoraxGenerator.prototype.collection = function(name) {
   var target = path.join(this.paths.collections, name + '.' + this.language),
       moduleName = name.split('/').shift();
   addScript.call(this, moduleName, target);
+  this.write(target, this.render('collection.handlebars', {
+    name: name
+  }));
 };
 
 ThoraxGenerator.prototype.model = function(name) {
   var target = path.join(this.paths.models, name + '.' + this.language),
       moduleName = name.split('/').shift();
   addScript.call(this, moduleName, target);
+  this.write(target, this.render('model.handlebars', {
+    name: name
+  }));
 };
 
 ThoraxGenerator.prototype.template = function(name) {
   var target = path.join(this.paths.templates, name + '.handlebars');
+  this.write(target, '');
 };
 
 ThoraxGenerator.prototype.save = function() {
@@ -141,22 +151,33 @@ function pathWithoutProjectDir(filePath) {
 
 function addScript(moduleName, script) {
   if (moduleName) {
-    try {
-      this.lumbarJSON.modules[moduleName].scripts.push(script);
-    } catch(e) {
-
-    }
+    ensureModuleInJSON.call(this, moduleName);
+    this.lumbarJSON.modules[moduleName].scripts.push(script);
   }
 }
 
 function addStyle(moduleName, style) {
   if (moduleName) {
-    try {
-      this.lumbarJSON.modules[moduleName].styles.push(style);
-    } catch(e) {
-
-    }
+    ensureModuleInJSON.call(this, moduleName);
+    this.lumbarJSON.modules[moduleName].styles.push(style);
   }
+}
+
+function ensureModuleInJSON(moduleName) {
+  if (!this.lumbarJSON.modules) {
+    this.lumbarJSON.modules = {};
+  }
+  if (!this.lumbarJSON.modules[moduleName]) {
+    this.lumbarJSON.modules[moduleName] = defaultModuleJSON();
+  }
+}
+
+function defaultModuleJSON() {
+  return {
+    routes: {},
+    scripts: [],
+    styles: []
+  };
 }
 
 function mkdirsSync(dirname) {
