@@ -27,6 +27,7 @@ var mode = 0777 ^ process.umask(),
     fs = require('fs'),
     handlebars = require('handlebars'),
     red = '\u001b[31m',
+    blue = '\u001b[33m',
     reset = '\u001b[0m';
 
 function ThoraxGenerator(options) {
@@ -170,6 +171,7 @@ function addStyle(moduleName, style) {
 
 function ensureModule(moduleName) {
   if (!ensureModuleInJSON.call(this, moduleName)) {
+    console.log(blue + '    Creating module ' + moduleName + reset);
     this.spec(moduleName);
     this.style(moduleName, moduleName);
     this.router(moduleName, moduleName);
