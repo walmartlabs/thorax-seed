@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     'model',
     'collection'
   ].forEach(function(action) {
-    grunt.registerTask('init:' + action, function(path) {
+    grunt.registerTask('generate:' + action, function(path) {
       if (!path) {
         throw new Error('Path argument required to thorax:' + action);
       }
