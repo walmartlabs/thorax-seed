@@ -49,7 +49,8 @@ module.exports = function(grunt) {
         paths: {
           views: "./js/views",
           models: "./js/models",
-          collections: "./js/collections"
+          collections: "./js/collections",
+          templates: "./templates"
         }
       }
     }
