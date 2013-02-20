@@ -15,13 +15,6 @@ module.exports = function(grunt) {
           base: publicDir,
           port: port
         }
-      },
-      'test-server': {
-        options: {
-          hostname: hostname,
-          base: publicDir,
-          port: 8981,
-        }
       }
     },
     lumbar: {
@@ -59,15 +52,6 @@ module.exports = function(grunt) {
           collections: "./js/collections"
         }
       }
-    },
-
-    // test runner
-    mocha: {
-      test: {
-        options: {
-          urls: ['http://' + hostname + ':8981/test.html']
-        }
-      }
     }
   });
   
@@ -80,14 +64,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-mocha');
-
-  grunt.registerTask('test', [
-    'lumbar:init',
-    'lumbar:test',
-    'connect:test-server',
-    'mocha:test'
-  ]);
 
   grunt.registerTask('default', [
     'thorax:inspector',

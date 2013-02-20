@@ -5,14 +5,12 @@
     "handlebars": "~1.0.0",
     "thorax": "~2.0.0",
     "lumbar-loader": "1.1.0",
-    "thorax-seed-test-harness": "0.0.1",
     "grunt-contrib-connect": "0.1.1",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "~0.4",
     "lumbar": "~2.0.0",
     "thorax-inspector": "0.2.4",
-    "open": "0.0.3",
-    "grunt-mocha": "0.2.2"
+    "open": "0.0.3"
   },
   "scripts": {
     "start": "./node_modules/grunt/bin/grunt"
