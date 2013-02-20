@@ -172,7 +172,6 @@ function addStyle(moduleName, style) {
 function ensureModule(moduleName) {
   if (!ensureModuleInJSON.call(this, moduleName)) {
     console.log(blue + '    Creating module ' + moduleName + reset);
-    this.spec(moduleName);
     this.style(moduleName, moduleName);
     this.router(moduleName, moduleName);
   }
