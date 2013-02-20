@@ -72,6 +72,7 @@ module.exports = function(grunt) {
     open('http://' + hostname + ':' + port);
   });
   
+  grunt.loadTasks('tasks');
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
   grunt.loadNpmTasks('grunt-contrib-connect');
