@@ -2,7 +2,7 @@
   "mixins": [
     "node_modules/lumbar-loader",
     "node_modules/thorax",
-    "config/base-lumbar.json"
+    "config/base.json"
   ],
   "modules": {
   },
