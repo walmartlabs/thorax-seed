@@ -47,13 +47,15 @@ module.exports = function(grunt) {
     // allows files to be opened when the
     // Thorax Inspector Chrome extension
     // is installed
-    'thorax-inspector': {
-      background: true,
-      editor: "subl",
-      paths: {
-        views: "./js/views",
-        models: "./js/models",
-        collections: "./js/collections"
+    thorax: {
+      inspector: {
+        background: true,
+        editor: "subl",
+        paths: {
+          views: "./js/views",
+          models: "./js/models",
+          collections: "./js/collections"
+        }
       }
     },
 
@@ -86,7 +88,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'thorax-inspector',
+    'thorax:inspector',
     'lumbar:init',
     'connect:server',
     'open-browser',
