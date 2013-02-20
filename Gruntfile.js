@@ -4,6 +4,8 @@ module.exports = function(grunt) {
       lumbarFile = './lumbar.json',
       hostname = require('os').hostname();
   
+  grunt.file.mkdir(publicDir);
+
   grunt.initConfig({
     // create a static webserver
     connect: {
