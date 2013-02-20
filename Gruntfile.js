@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       },
       // builds tests
       test: {
-        build: 'config/test-lumbar.json',
+        build: 'config/test.json',
         output: publicDir
       }
     },
