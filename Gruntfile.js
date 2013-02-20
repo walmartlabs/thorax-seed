@@ -5,15 +5,6 @@ module.exports = function(grunt) {
       hostname = require('os').hostname();
   
   grunt.initConfig({
-    jshint: {
-      all: [
-        'js/**/*.js',
-        '!js/lib/bootstrap.js'
-      ],
-      options: {
-        jshintrc: '.jshintrc'
-      }
-    },
     // create a static webserver
     connect: {
       server: {
@@ -83,9 +74,7 @@ module.exports = function(grunt) {
   
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
-  grunt.loadNpmTasks('thorax');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha');
 
   grunt.registerTask('test', [
@@ -96,7 +85,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'jshint',
     'thorax-inspector',
     'lumbar:init',
     'connect:server',

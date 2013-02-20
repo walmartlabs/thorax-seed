@@ -2,14 +2,14 @@
   "name": "Application",
   "version": "0.0.1",
   "devDependencies": {
-    "thorax": "git://github.com/walmartlabs/thorax.git",
-    "lumbar-loader": "git://github.com/walmartlabs/lumbar-loader.git",
-    "thorax-seed-test-harness": "git://github.com/eastridge/thorax-seed-test-harness.git",
+    "thorax": "~2.0.0",
+    "lumbar-loader": "1.1.0",
+    "thorax-seed-test-harness": "0.0.1",
     "grunt-contrib-connect": "0.1.1",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "0.4.0rc8",
     "lumbar": "git://github.com/eastridge/lumbar.git",
-    "thorax-inspector": "git://github.com/eastridge/thorax-inspector-backend.git",
+    "thorax-inspector": "0.2.3",
     "open": "0.0.3",
     "grunt-mocha": "0.2.2"
   },
