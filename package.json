@@ -2,6 +2,7 @@
   "name": "Application",
   "version": "0.0.1",
   "devDependencies": {
+    "handlebars": "~1.0.0",
     "thorax": "~2.0.0",
     "lumbar-loader": "1.1.0",
     "thorax-seed-test-harness": "0.0.1",
