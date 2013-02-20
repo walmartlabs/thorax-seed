@@ -31,7 +31,7 @@ function ThoraxGenerator(options) {
   options = options || {};
   this._lumbarJSONPath = options.lumbarJSONPath || path.join(process.cwd(), 'lumbar.json');
   this._baseJSONPath = options.baseJSONPath || path.join(process.cwd(), 'config/base-lumbar.json');
-  this._generatorsPath = path.join(__dirname, 'templates');
+  this._generatorsPath = path.join(__dirname, 'generators');
   this._modifyLumbarJSON = options.modifyLumbarJSON || true;
   this.lumbarJSON = JSON.parse(fs.readFileSync(this._lumbarJSONPath));
   console.log(this._baseJSONPath);
