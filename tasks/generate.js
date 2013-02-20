@@ -9,13 +9,13 @@ module.exports = function(grunt) {
     'model',
     'collection'
   ].forEach(function(action) {
-    grunt.registerTask('generate:' + action, function(path) {
+    grunt.registerTask('generate:' + action, function(path, moduleName) {
       if (!path) {
-        throw new Error('Path argument required to thorax:' + action);
+        throw new Error('Path argument required to generate:' + action);
       }
       var generator = new ThoraxGenerator();
       ThoraxGenerator.currentAction = action;
-      generator[action].apply(generator, [path]);
+      generator[action].apply(generator, [path, moduleName]);
       generator.save();
     });
   });
@@ -50,10 +50,7 @@ function ThoraxGenerator(options) {
 }
 
 ThoraxGenerator.prototype.module = function(name) {
-  this.lumbarJSON.modules[name] = defaultModuleJSON();
-  this.spec(name);
-  this.style(name, name);
-  this.router(name, name);
+  ensureModule.call(this, name);
 };
 
 ThoraxGenerator.prototype.spec = function(name) {
@@ -63,22 +60,27 @@ ThoraxGenerator.prototype.spec = function(name) {
 };
 
 ThoraxGenerator.prototype.style = function(name, moduleName) {
-  var target = path.join(this.paths.stylesheets, name + '.css');
+  var target = path.join(this.paths.stylesheets, name + '.css'),
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   this.write(target, '');
-  addStyle.call(this, moduleName, target);
+  addStyle.call(this, name, target);
 };
 
 ThoraxGenerator.prototype.router = function(name, moduleName) {
-  var target = path.join(this.paths.routers, name + '.' + this.language);
+  var target = path.join(this.paths.routers, name + '.' + this.language),
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   this.write(target, this.render('router.handlebars', {
     name: name
   }));
-  addScript.call(this, moduleName, target);
+  addScript.call(this, name, target);
 };
 
-ThoraxGenerator.prototype.view = function(name) {
+ThoraxGenerator.prototype.view = function(name, moduleName) {
   var target = path.join(this.paths.views, name + '.' + this.language),
-      moduleName = name.split('/').shift();
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('view.handlebars', {
     name: name
@@ -86,9 +88,10 @@ ThoraxGenerator.prototype.view = function(name) {
   this.template(name);
 };
 
-ThoraxGenerator.prototype['collection-view'] = function(name) {
+ThoraxGenerator.prototype['collection-view'] = function(name, moduleName) {
   var target = path.join(this.paths.views, name + '.' + this.language),
-      moduleName = name.split('/').shift();
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('collection-view.handlebars', {
     name: name
@@ -98,18 +101,20 @@ ThoraxGenerator.prototype['collection-view'] = function(name) {
   this.template(name + '-empty');
 };
 
-ThoraxGenerator.prototype.collection = function(name) {
+ThoraxGenerator.prototype.collection = function(name, moduleName) {
   var target = path.join(this.paths.collections, name + '.' + this.language),
-      moduleName = name.split('/').shift();
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('collection.handlebars', {
     name: name
   }));
 };
 
-ThoraxGenerator.prototype.model = function(name) {
+ThoraxGenerator.prototype.model = function(name, moduleName) {
   var target = path.join(this.paths.models, name + '.' + this.language),
-      moduleName = name.split('/').shift();
+      moduleName = moduleName || name.split('/').shift();
+  ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('model.handlebars', {
     name: name
@@ -163,13 +168,23 @@ function addStyle(moduleName, style) {
   }
 }
 
+function ensureModule(moduleName) {
+  if (!ensureModuleInJSON.call(this, moduleName)) {
+    this.spec(moduleName);
+    this.style(moduleName, moduleName);
+    this.router(moduleName, moduleName);
+  }
+}
+
 function ensureModuleInJSON(moduleName) {
   if (!this.lumbarJSON.modules) {
     this.lumbarJSON.modules = {};
   }
   if (!this.lumbarJSON.modules[moduleName]) {
     this.lumbarJSON.modules[moduleName] = defaultModuleJSON();
+    return false;
   }
+  return true;
 }
 
 function defaultModuleJSON() {
