@@ -8,11 +8,16 @@
     "grunt-contrib-connect": "0.1.1",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "~0.4",
+    "grunt-cli": "0.1.6",
     "lumbar": "~2.0.0",
     "thorax-inspector": "0.2.4",
     "open": "0.0.3"
   },
   "scripts": {
-    "start": "./node_modules/grunt/bin/grunt"
+    "start": "./node_modules/grunt-cli/bin/grunt",
+    "test": "./node_modules/grunt-cli/bin/grunt test"
+  },
+  "engines": {
+    "node" : ">=0.8.0"
   }
 }
