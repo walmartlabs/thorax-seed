@@ -7,7 +7,7 @@ The [Thorax Seed](https://github.com/walmartlabs/thorax-seed) contains a blank [
 
 From Zero to Todos
 ------------------
-The **[Thorax intro screencast](xxx)** demonstrates how to build a simple todo list in a few minutes. It also shows the optional [Thorax Inspector Chrome Extension](https://chrome.google.com/webstore/detail/thorax-inspector/poioalbefcopgeaeaadelomciijaondk?hl=en-US). To start from scratch and build your own you'll need git and [Node](http://nodejs.org) installed on your system. You'll then need to download or clone this repository:
+The **[Thorax intro screencast](https://vimeo.com/60230630)** demonstrates how to build a simple todo list in a few minutes. It also shows the optional [Thorax Inspector Chrome Extension](https://chrome.google.com/webstore/detail/thorax-inspector/poioalbefcopgeaeaadelomciijaondk?hl=en-US). To start from scratch and build your own you'll need git and [Node](http://nodejs.org) installed on your system. You'll then need to download or clone this repository:
 
     git clone git://github.com/walmartlabs/thorax-seed.git
 
