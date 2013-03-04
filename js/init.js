@@ -5,7 +5,7 @@ var Application = window.Application = new Thorax.LayoutView({
   name: 'application'
 });
 
-// Alias the special hashes for naming consitency
+// Alias the special hashes for naming consistency
 Application.templates = Thorax.templates;
 Application.Views = Thorax.Views;
 Application.Models = Thorax.Models;
