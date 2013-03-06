@@ -140,10 +140,10 @@ Any template with the same name will also automatically be set as the `template`
 
 The `Application` object also serves as our root view and it's `el` is already attached to the page. It is an instance of `Thorax.LayoutView` which is meant to display a single view at a time and has a `setView` method. In `js/routers/todos.js` we can call:
 
-  index: function() {
-    var view = new Application.Views["todos/index"]({});
-    Application.setView(view);
-  }
+    index: function() {
+      var view = new Application.Views["todos/index"]({});
+      Application.setView(view);
+    }
 
 Update `templates/todos/index.handlebars` with some content to see that it's displaying properly.
 
