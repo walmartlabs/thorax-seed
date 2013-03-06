@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   var port = 8000,
       publicDir = './public',
       lumbarFile = './lumbar.json',
-      hostname = require('os').hostname();
+      hostname = 'localhost';
   
   grunt.file.mkdir(publicDir);
 
