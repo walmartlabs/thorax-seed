@@ -25,6 +25,9 @@ $(function() {
     root: '/',
     silent: true
   });
+  // TODO: can remove after this is fixed:
+  // https://github.com/walmartlabs/lumbar/issues/84
+  Application.template = Thorax.templates.application;
   Application.appendTo('body');
   Backbone.history.loadUrl();
 });
