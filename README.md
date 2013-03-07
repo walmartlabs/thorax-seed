@@ -29,8 +29,8 @@ File Structure
 - **js** : All of your application code lives in here 
 - **lumbar.json** : A config containing all of the routes and files that compose your application
 - **package.json** : Standard npm config file, only needed while still developing your app
-- **public** : Your generated application, this folder should generally not be checked into git
-- **static** : Assets to be copied to the public folder when the application is built
+- **public** : Will be served as the root directory by the server
+- **public/modules** : Your generated application code, this folder should generally not be checked into git
 - **stylesheets** : Generally speaking your styles should be application wide (in `base.css`) or split up per module
 - **tasks** : Any extra grunt tasks, including the scaffolding
 - **templates** : Handlebars templates, if a template shares the name / path as a view it will be auto assigned as the `template` property of the view

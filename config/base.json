@@ -26,16 +26,6 @@
       "styles": [
         "../stylesheets/base.css",
         "../stylesheets/bootstrap.css"
-      ],
-      "static": [
-        {
-          "src": "../static/index.html",
-          "dest": "index.html"
-        },
-        {
-          "src": "../static/img",
-          "dest": "img"
-        }
       ]
     }
   },
