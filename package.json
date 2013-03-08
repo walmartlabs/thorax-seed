@@ -14,8 +14,8 @@
     "open": "0.0.3"
   },
   "scripts": {
-    "start": "./node_modules/grunt-cli/bin/grunt",
-    "test": "./node_modules/grunt-cli/bin/grunt test"
+    "start": "node ./node_modules/grunt-cli/bin/grunt",
+    "test": "node ./node_modules/grunt-cli/bin/grunt test"
   },
   "engines": {
     "node" : ">=0.8.0"
