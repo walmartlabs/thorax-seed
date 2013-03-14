@@ -33,11 +33,11 @@ var mode = 0777 ^ process.umask(),
 function ThoraxGenerator(options) {
   options = options || {};
   this._lumbarJSONPath = options.lumbarJSONPath || path.join(process.cwd(), 'lumbar.json');
-  this._baseJSONPath = options.baseJSONPath || path.join(process.cwd(), 'config/base.json');
+  //this._baseJSONPath = options.baseJSONPath || path.join(process.cwd(), 'config/base.json');
   this._generatorsPath = path.join(__dirname, 'generators');
   this._modifyLumbarJSON = options.modifyLumbarJSON || true;
   this.lumbarJSON = JSON.parse(fs.readFileSync(this._lumbarJSONPath));
-  this.baseJSON = JSON.parse(fs.readFileSync(this._baseJSONPath));
+  //this.baseJSON = JSON.parse(fs.readFileSync(this._baseJSONPath));
   this.paths = {
     views: "js/views",
     collections: "js/collections",
@@ -147,7 +147,7 @@ ThoraxGenerator.prototype.write = function(file, contents) {
 
 ThoraxGenerator.prototype.render = function(file, context) {
   context = context || {};
-  context.applicationName = this.baseJSON.application.name;
+  context.applicationName = this.lumbarJSON.application.name;
   return handlebars.compile(fs.readFileSync(path.join(this._generatorsPath, file)).toString())(context);
 };
 
