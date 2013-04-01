@@ -55,13 +55,13 @@ ThoraxGenerator.prototype.module = function(name) {
 };
 
 ThoraxGenerator.prototype.spec = function(name) {
-  this.write(path.join(this.paths.specs, name + '.' + this.language), this.render('spec.handlebars', {
+  this.write((this.paths.specs + '/' + name + '.' + this.language), this.render('spec.handlebars', {
     name: name
   }));
 };
 
 ThoraxGenerator.prototype.style = function(name, moduleName) {
-  var target = path.join(this.paths.stylesheets, name + '.css'),
+  var target = this.paths.stylesheets + '/' + name + '.css',
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName);
   this.write(target, '');
@@ -69,7 +69,7 @@ ThoraxGenerator.prototype.style = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.router = function(name, moduleName) {
-  var target = path.join(this.paths.routers, name + '.' + this.language),
+  var target = this.paths.routers + '/' + name + '.' + this.language,
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName, true);
   this.write(target, this.render('router.handlebars', {
@@ -79,7 +79,7 @@ ThoraxGenerator.prototype.router = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.view = function(name, moduleName) {
-  var target = path.join(this.paths.views, name + '.' + this.language),
+  var target = this.paths.views + '/' + name + '.' + this.language,
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
@@ -90,7 +90,7 @@ ThoraxGenerator.prototype.view = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype['collection-view'] = function(name, moduleName) {
-  var target = path.join(this.paths.views, name + '.' + this.language),
+  var target = this.paths.views + '/' + name + '.' + this.language,
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
@@ -103,7 +103,7 @@ ThoraxGenerator.prototype['collection-view'] = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.collection = function(name, moduleName) {
-  var target = path.join(this.paths.collections, name + '.' + this.language),
+  var target = this.paths.collections + '/' + name + '.' + this.language,
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
@@ -113,7 +113,7 @@ ThoraxGenerator.prototype.collection = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.model = function(name, moduleName) {
-  var target = path.join(this.paths.models, name + '.' + this.language),
+  var target = this.paths.models + '/' + name + '.' + this.language,
       moduleName = moduleName || name.split('/').shift();
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
@@ -123,7 +123,7 @@ ThoraxGenerator.prototype.model = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.template = function(name) {
-  var target = path.join(this.paths.templates, name + '.handlebars');
+  var target = this.paths.templates + '/' + name + '.handlebars';
   this.write(target, '');
 };
 
