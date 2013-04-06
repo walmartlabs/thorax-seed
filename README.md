@@ -26,7 +26,7 @@ File Structure
 
 - **config** : Extra config files, if you need to add or remove libraries (such as jQuery) from your application, edit `base.json`
 - **Gruntfile.js** : Your friendly [Grunt](http://gruntjs.com) configuration file, `npm start` will run the default task specified in this file
-- **js** : All of your application code lives in here 
+- **js** : All of your application code lives in here
 - **lumbar.json** : A config containing all of the routes and files that compose your application
 - **package.json** : Standard npm config file, only needed while still developing your app
 - **public** : Will be served as the root directory by the server
@@ -67,7 +67,7 @@ It will also initialize a `todos` module since it doesn't exist yet. This will i
 
 Modules and lumbar.json
 -----------------------
-A Lumbar module is composed of routes (to be passed to `Backbone.Router`s), stylesheets and JavaScripts. When a route is visited the scripts and styles associated with the module will be loaded. After running the `generate:view` task your `lumbar.json` should look like this: 
+A Lumbar module is composed of routes (to be passed to `Backbone.Router`s), stylesheets and JavaScripts. When a route is visited the scripts and styles associated with the module will be loaded. After running the `generate:view` task your `lumbar.json` should look like this:
 
     {
       "mixins": [
@@ -105,12 +105,12 @@ Since all routes are specified in `lumbar.json`, to create our first route it ne
         },
         ...
 
-In `js/routers/todos.index` we will then implement the method:
+In `js/routers/todos.js` we will then implement the method:
 
     new (Backbone.Router.extend({
       routes: module.routes,
       index: function() {
-        
+
       }
     }));
 
@@ -171,7 +171,7 @@ To display the collection we will edit `templates/todos/index.handlebars` and us
     {{/collection}}
 
 Since we want to be able to mark our todos as done and add new ones, we will add a checkbox to each item in the collection and a form to make new items at the bottom. Our `templates/todos/index.handlebars` should now look like:
-  
+
     {{#collection tag="ul"}}
       <li {{#done}}class="done"{{/done}}>
         <input type="checkbox" {{#done}}checked{{/done}}>
@@ -232,5 +232,5 @@ And that's a finished non persistent todo list application! For a more complex t
 More Seeds
 ----------
 
-- [Todos](https://github.com/eastridge/thorax-seed-todos) : The project in the state at the end of the screencast (and described in this document) 
+- [Todos](https://github.com/eastridge/thorax-seed-todos) : The project in the state at the end of the screencast (and described in this document)
 - [Mocha](https://github.com/eastridge/thorax-seed-mocha) : Blank seed with a [Mocha](http://visionmedia.github.com/mocha/) test harness setup
