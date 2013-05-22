@@ -13,6 +13,7 @@ module.exports = function(grunt) {
       if (!path) {
         throw new Error('Path argument required to generate:' + action);
       }
+      if(!moduleName && path.indexOf('/') === -1) moduleName = "base";
       var generator = new ThoraxGenerator();
       ThoraxGenerator.currentAction = action;
       generator[action].apply(generator, [path, moduleName]);
