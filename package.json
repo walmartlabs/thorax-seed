@@ -9,7 +9,7 @@
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "~0.4",
     "grunt-cli": "0.1.6",
-    "lumbar": "~2.0.0",
+    "lumbar": "~2.2",
     "thorax-inspector": "0.2.4",
     "open": "0.0.3"
   },
