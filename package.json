@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "devDependencies": {
     "handlebars": "~1.0.0",
-    "thorax": "~2.0.0",
-    "lumbar-loader": "1.1.0",
     "grunt-contrib-connect": "0.1.1",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "~0.4",
