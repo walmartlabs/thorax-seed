@@ -14,7 +14,7 @@
         "lumbar-loader"
       ],
       "scripts": [
-        "node_modules/lumbar-loader/lumbar-loader-backbone.js",
+        "components/lumbar-loader/lumbar-loader-backbone.js",
         "js/init.js",
         "js/model.js",
         "js/collection.js",
