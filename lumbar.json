@@ -3,10 +3,6 @@
     "name": "Application",
     "module": "base"
   },
-  "mixins": [
-    "node_modules/lumbar-loader",
-    "node_modules/thorax"
-  ],
   "modules": {
     "base": {
       "mixins": [
