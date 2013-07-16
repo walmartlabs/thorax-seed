@@ -7,7 +7,7 @@ The [Thorax Seed](https://github.com/walmartlabs/thorax-seed) contains a blank [
 
 From Zero to Todos
 ------------------
-The **[Thorax intro screencast](https://vimeo.com/60230630)** demonstrates how to build a simple todo list in a few minutes. It also shows the optional [Thorax Inspector Chrome Extension](https://chrome.google.com/webstore/detail/thorax-inspector/poioalbefcopgeaeaadelomciijaondk?hl=en-US). To start from scratch and build your own you'll need git and [Node](http://nodejs.org) installed on your system. You'll then need to download or clone this repository:
+The **[Thorax intro screencast](https://vimeo.com/60230630)** demonstrates how to build a simple todo list in a few minutes. It also shows the optional [Thorax Inspector Chrome Extension](https://chrome.google.com/webstore/detail/thorax-inspector/poioalbefcopgeaeaadelomciijaondk?hl=en-US). To start from scratch and build your own you'll need [git](http://git-scm.com/) and [Node](http://nodejs.org) installed on your system. You'll then need to download or clone this repository:
 
     git clone git://github.com/walmartlabs/thorax-seed.git
 
@@ -25,7 +25,7 @@ Your project is ready to run and a browser window will be opened with the runnin
 File Structure
 --------------
 
-- **config** : Extra config files, if you need to add or remove libraries (such as jQuery) from your application, edit `base.json`
+- **bower.json** : Dependencies of the project, if you need to add or remove libraries from your application, edit this file
 - **Gruntfile.js** : Your friendly [Grunt](http://gruntjs.com) configuration file, `npm start` will run the default task specified in this file
 - **js** : All of your application code lives in here
 - **lumbar.json** : A config containing all of the routes and files that compose your application
@@ -95,7 +95,7 @@ A Lumbar module is composed of routes (to be passed to `Backbone.Router`s), styl
       }
     }
 
-`mixins` loads up the base configurations for the project. To edit what libraries (jQuery / Bootstrap, etc) are included in the project open up `config/base.json`. The `templates` hash defines what templates map to a given view. An entry only needs to be added if the name of a view doesn't match the name of a template. For instance, the generator created `js/views/todos/index.js` and `templates/todos/index.js`, but it doesn't need to be defined here as the names match.
+`mixins` loads up the base configurations for the project. To edit what libraries (jQuery / Bootstrap, etc) are included in the project open up `bower.json`. The `templates` hash defines what templates map to a given view. An entry only needs to be added if the name of a view doesn't match the name of a template. For instance, the generator created `js/views/todos/index.js` and `templates/todos/index.js`, but it doesn't need to be defined here as the names match.
 
 Since all routes are specified in `lumbar.json`, to create our first route it needs to be added there so we will create an empty (root) route pointing at an `index` method:
 
