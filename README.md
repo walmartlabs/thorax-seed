@@ -14,7 +14,6 @@ The **[Thorax intro screencast](https://vimeo.com/60230630)** demonstrates how t
 Once your clone is complete, change directories into your cloned seed and run:
 
     npm install
-    bower install
 
 This may take a minute. Note that all of the dependencies are specific to making it easier to build, run and test your app. Once your app is written it can be deployed in any environment. Once `npm install` is finished you can start your app:
 
