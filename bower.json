@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "thorax": "2.0.0-rc11",
-    "lumbar-loader": "walmartlabs/lumbar-loader#~1.1.2"
+    "lumbar-loader": "walmartlabs/lumbar-loader#~1.1.2",
+    "bootstrap": "components/bootstrap#~2.3.2"
   }
 }
