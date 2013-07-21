@@ -5,6 +5,176 @@
     <link rel="stylesheet" type="text/css" href="/modules/base.css">
   </head>
   <body>
+
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0 auto;
+
+        background: #fafafa;
+        color: #444;
+
+        counter-reset: thorax-counter;
+      }
+
+      a {
+        color: #1a75cf;
+        font-weight: bold;
+      }
+
+      header {
+        margin-bottom: 24px;
+        padding: 14px 0 15px;
+        border-bottom: 6px solid #1a75cf;
+
+        background: #22394f;
+        color: #fafafa;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1 {
+        margin: 0.75em 0;
+
+        font-size: 24px;
+        text-align: center;
+      }
+
+      h2 {
+        margin: 0.75em 0;
+        font-size: 32px;
+        line-height: 44px;
+        border-bottom: 5px solid #d3dde6;
+      }
+
+      aside {
+        margin: 20px 0;
+        padding: 10px 20px;
+        border: 1px solid #d3dde6;
+        border-right: 0;
+        border-left: 0;
+
+        background: #edf1f5;
+      }
+
+      aside h3 {
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      aside ul {
+        margin: 0;
+
+        font-size: 14px;
+        list-style: none;
+      }
+
+      aside li {
+        display: inline-block;
+        margin: 0.5em 20px 0.5em 0;
+      }
+
+      .thorax-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .thorax-primary {
+        font-size: 18px;
+      }
+
+      .thorax-steps {
+        margin-bottom: 32px;
+        margin-left: 42px;
+
+        list-style: none;
+      }
+
+      .thorax-steps li {
+        position: relative;
+        margin: 1em 0;
+
+        counter-increment: thorax-counter;
+      }
+
+      .thorax-steps li::before {
+        position: absolute;
+        top: 6px;
+        left: -42px;
+
+        width: 28px;
+        height: 28px;
+
+        border-radius: 50%;
+
+        background: #1a75cf;
+        color: #fafafa;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 28px;
+        text-align: center;
+
+        content: counter(thorax-counter);
+      }
+
+      .thorax-steps h3 {
+        margin: 0;
+
+        font-size: 18px;
+      }
+
+      .thorax-steps p {
+        font-size: 14px;
+      }
+
+    </style>
+
+    <header>
+      <h1 class="thorax-container">Welcome to Thorax</h1>
+    </header>
+
+    <div class="thorax-container">
+      <div class="thorax-primary">
+        <h2>Getting Started</h2>
+
+        <ol class="thorax-steps">
+          <li>
+            <h3>Do one thing.</h3>
+
+            <p>Fried cheese… with club sauce. Popcorn shrimp… with club sauce. Chicken fingers… with spicy club sauce. I'll sacrifice anything for my children. What have we always said is the most important thing?</p>
+          </li>
+          <li>
+            <h3>Do another thing.</h3>
+
+            <p>Fried cheese… with club sauce. Popcorn shrimp… with club sauce. Chicken fingers… with spicy club sauce. I'll sacrifice anything for my children. What have we always said is the most important thing?</p>
+          </li>
+          <li>
+            <h3>Do one last thing.</h3>
+
+            <p>Fried cheese… with club sauce. Popcorn shrimp… with club sauce. Chicken fingers… with spicy club sauce. I'll sacrifice anything for my children. What have we always said is the most important thing?</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <aside>
+      <div class="thorax-container">
+        <h3>Resources</h3>
+
+        <ul>
+          <li><a href="http://thoraxjs.org/api.html">API Reference</a></li>
+          <li><a href="http://thoraxjs.org/start.html">Tutorials</a></li>
+          <li><a href="http://vimeo.com/60230630">Screencast</a></li>
+        </ul>
+      </div>
+    </aside>
+
     <script>
       // Set the prefix that lumbar-loader will look for the
       // generated files in
