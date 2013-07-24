@@ -7,6 +7,12 @@
   <body>
 
     <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
       html {
         height: 100%;
       }
@@ -28,7 +34,10 @@
       }
 
       header {
-        margin-bottom: 24px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
         padding: 23px 0 26px;
         border-bottom: 6px solid #1a75cf;
 
@@ -52,11 +61,16 @@
       }
 
       aside {
-        margin: 20px 0;
-        padding: 10px 20px;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        bottom: 0;
+        width: 326px;
+        margin-left: 32px;
+        padding: 32px 20px;
         border: 1px solid #d3dde6;
-        border-right: 0;
-        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
 
         background: #edf1f5;
       }
@@ -69,23 +83,30 @@
       }
 
       aside ul {
-        margin: 0;
+        margin: 1em 0;
 
         font-size: 14px;
         list-style: none;
       }
 
       aside li {
-        display: inline-block;
-        margin: 0.5em 20px 0.5em 0;
+        margin: 0.5em 0;
       }
 
       .thorax-container {
-        max-width: 600px;
+        position: relative;
+        max-width: 960px;
         margin: 0 auto;
       }
 
+      .thorax-wrapper {
+        min-height: 100%;
+        padding: 75px 0 20px;
+      }
+
       .thorax-primary {
+        width: 600px;
+
         font-size: 18px;
       }
 
@@ -141,7 +162,7 @@
       </div>
     </header>
 
-    <div class="thorax-container">
+    <div class="thorax-container thorax-wrapper">
       <div class="thorax-primary">
         <h2>Getting Started</h2>
 
@@ -163,10 +184,8 @@
           </li>
         </ol>
       </div>
-    </div>
 
-    <aside>
-      <div class="thorax-container">
+      <aside>
         <h3>Resources</h3>
 
         <ul>
@@ -174,8 +193,8 @@
           <li><a href="http://thoraxjs.org/start.html">Tutorials</a></li>
           <li><a href="http://vimeo.com/60230630">Screencast</a></li>
         </ul>
-      </div>
-    </aside>
+      </aside>
+    </div>
 
     <script>
       // Set the prefix that lumbar-loader will look for the
