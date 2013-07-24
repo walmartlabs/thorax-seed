@@ -149,7 +149,7 @@ Update `templates/todos/index.handlebars` with some content to see that it's dis
 
 Rendering a Collection
 ----------------------
-To implement a todos list we need to create a collection and set it on the view. Unlike a `Backbone.View` instance a `Throax.View` (and therefore `Application.View`) instance does not have an `options` object. All properties passed to the constructor are set on the instance and also become available inside of the handlebars template.
+To implement a todos list we need to create a collection and set it on the view. Unlike a `Backbone.View` instance a `Thorax.View` (and therefore `Application.View`) instance does not have an `options` object. All properties passed to the constructor are set on the instance and also become available inside of the handlebars template.
 
 Our `index` method in `js/routers/todos.js` should look like:
 
