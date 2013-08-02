@@ -1,7 +1,7 @@
 Thorax Seed
 ===========
 
-The [Thorax Seed](https://github.com/walmartlabs/thorax-seed) contains a blank [Thorax](http://thoraxjs.org/) + [Lumbar](http://walmartlabs.github.com/lumbar) project that you can download and clone to start building you app.
+The [Thorax Seed](https://github.com/walmartlabs/thorax-seed) contains a blank [Thorax](http://thoraxjs.org/) + [Lumbar](http://walmartlabs.github.com/lumbar) project that you can download and clone to start building your app.
 
 **To report issues or submit pull requests on Thorax itself visit the [core library repository](https://github.com/walmartlabs/thorax).**
 
