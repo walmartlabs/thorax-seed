@@ -15,6 +15,16 @@ Application.Collections = Thorax.Collections;
 // to the application object
 Thorax.setRootObject(Application);
 
+// This configures our Application object with values
+// from the lumbar config, then sets it as the exported
+// value from the base module.
+_.extend(Application, module.exports);
+module.exports = Application;
+
+Application.initBackboneLoader(Application, function(type, module) {
+  // You have failed to load the module. Let the world know.
+});
+
 $(function() {
   // Application and other templates included by the base
   // Application may want to use the link and url helpers
@@ -32,8 +42,3 @@ $(function() {
   Backbone.history.loadUrl();
 });
 
-// This configures our Application object with values
-// from the lumbar config, then sets it as the exported
-// value from the base module.
-_.extend(Application, module.exports);
-module.exports = Application;
