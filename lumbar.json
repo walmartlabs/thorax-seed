@@ -19,11 +19,11 @@
         "bower_components/lumbar-loader/lumbar-loader-events.js",
         "bower_components/lumbar-loader/lumbar-loader-standard.js",
         "bower_components/lumbar-loader/lumbar-loader-backbone.js",
+        {"module-map": true},
         "js/init.js",
         "js/model.js",
         "js/collection.js",
-        "js/view.js",
-        {"module-map": true}
+        "js/view.js"
       ],
       "styles": [
         "stylesheets/base.css",
