@@ -41,6 +41,7 @@ The seed comes with some simple code generation tools that will automatically cr
 
     npm install -g grunt-cli
 
+It is suggested you make a symbolic link to make running grunt seamless.
 Once you've got that installed you can run any of the following commands:
 
 - `grunt generate:module:moduleName`
@@ -161,6 +162,7 @@ Our `index` method in `js/routers/todos.js` should look like:
       var view = new Application.Views["todos/index"]({
         collection: collection
       });
+      Application.setCollection(collection);
       Application.setView(view);
     }
 
