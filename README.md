@@ -138,7 +138,7 @@ When a view class is created with `extend` that has `name` property it will auto
 
 Any template with the same name will also automatically be set as the `template` property, in this case `templates/todos/index.handlebars` will be automatically set as the `template` property.
 
-The `Application` object also serves as our root view and it's `el` is already attached to the page. It is an instance of `Thorax.LayoutView` which is meant to display a single view at a time and has a `setView` method. In `js/routers/todos.js` we can call:
+The `Application` object also serves as our root view and its `el` is already attached to the page. It is an instance of `Thorax.LayoutView` which is meant to display a single view at a time and has a `setView` method. In `js/routers/todos.js` we can call:
 
     index: function() {
       var view = new Application.Views["todos/index"]({});
