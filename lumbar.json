@@ -6,28 +6,67 @@
   "modules": {
     "base": {
       "scripts": [
-        {"src": "bower_components/underscore/underscore.js", "global": true},
-        {"src": "bower_components/jquery/jquery.js", "global": true},
-        {"src": "bower_components/backbone/backbone.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/script.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/queue.js", "global": true},
-        {"src": "bower_components/lumbar-loader/local-cache.js", "global": true},
-        {"src": "bower_components/handlebars/handlebars.js", "global": true},
-        {"src": "bower_components/bootstrap/js/bootstrap.js", "global": true},
+        {
+          "src": "bower_components/underscore/underscore.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/jquery/jquery.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/backbone/backbone.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/lib/script.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/lib/queue.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/local-cache.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/handlebars/handlebars.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/bootstrap/js/bootstrap.js",
+          "global": true
+        },
         "bower_components/thorax/thorax.js",
         "bower_components/lumbar-loader/lumbar-loader.js",
         "bower_components/lumbar-loader/lumbar-loader-events.js",
         "bower_components/lumbar-loader/lumbar-loader-standard.js",
         "bower_components/lumbar-loader/lumbar-loader-backbone.js",
+        {
+          "module-map": true
+        },
         "js/init.js",
         "js/model.js",
         "js/collection.js",
-        "js/view.js",
-        {"module-map": true}
+        "js/view.js"
       ],
       "styles": [
         "stylesheets/base.css",
         "bower_components/bootstrap/css/bootstrap.css"
+      ]
+    },
+    "todos": {
+      "routes": {
+        "" : "index"
+      },
+      "scripts": [
+        "js/routers/todos.js",
+        "js/views/todos/index.js",
+        "js/views/todos/sub-index.js"
+      ],
+      "styles": [
+        "stylesheets/todos.css"
       ]
     }
   },

@@ -3,3 +3,4 @@ node_modules
 public/modules
 components
 bower_components
+*.tmproj
