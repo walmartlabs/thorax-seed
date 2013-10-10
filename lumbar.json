@@ -58,7 +58,8 @@
     },
     "todos": {
       "routes": {
-        "" : "index"
+        "": "index",
+        "test": "test"
       },
       "scripts": [
         "js/routers/todos.js",

@@ -21,5 +21,9 @@ new (Backbone.Router.extend({
     });
     
     Application.setView(view);
+  },
+  
+  test: function(){
+    alert('test route');
   }
 }));
