@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       bower.commands.install().on('data', function(data) {
         process.stdout.write(data);
       }).on('error', function(data) {
-        process.stderr.write(data);
+        process.stderr.write((data.stack || data) + '');
       }).on('end', function (data) {
         if (data) {
           process.stdout.write(data);
