@@ -8,7 +8,7 @@
     "grunt": "~0.4",
     "grunt-cli": "0.1.6",
     "lumbar": "2.2.5",
-    "thorax-inspector": "0.2.4",
+    "thorax-inspector": "~0.2.4",
     "open": "0.0.3",
     "bower": "~0.10"
   },
