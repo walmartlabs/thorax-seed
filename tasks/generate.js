@@ -27,6 +27,7 @@ var mode = 0777 ^ process.umask(),
     path = require('path'),
     fs = require('fs'),
     handlebars = require('handlebars'),
+    Lumbar = require('lumbar'),
     red = '\u001b[31m',
     blue = '\u001b[33m',
     reset = '\u001b[0m';
@@ -34,11 +35,9 @@ var mode = 0777 ^ process.umask(),
 function ThoraxGenerator(options) {
   options = options || {};
   this._lumbarJSONPath = options.lumbarJSONPath || path.join(process.cwd(), 'lumbar.json');
-  //this._baseJSONPath = options.baseJSONPath || path.join(process.cwd(), 'config/base.json');
   this._generatorsPath = path.join(__dirname, 'generators');
   this._modifyLumbarJSON = options.modifyLumbarJSON || true;
-  this.lumbarJSON = JSON.parse(fs.readFileSync(this._lumbarJSONPath));
-  //this.baseJSON = JSON.parse(fs.readFileSync(this._baseJSONPath));
+  this.lumbarJSON = Lumbar.config.readConfig(this._lumbarJSONPath, true);
   this.paths = {
     views: "js/views",
     collections: "js/collections",
@@ -62,16 +61,18 @@ ThoraxGenerator.prototype.spec = function(name) {
 };
 
 ThoraxGenerator.prototype.style = function(name, moduleName) {
-  var target = this.paths.stylesheets + '/' + name + '.css',
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.stylesheets + '/' + name + '.css';
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName);
   this.write(target, '');
   addStyle.call(this, name, target);
 };
 
 ThoraxGenerator.prototype.router = function(name, moduleName) {
-  var target = this.paths.routers + '/' + name + '.' + this.language,
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.routers + '/' + name + '.' + this.language;
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName, true);
   this.write(target, this.render('router.handlebars', {
     name: name
@@ -80,8 +81,9 @@ ThoraxGenerator.prototype.router = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.view = function(name, moduleName) {
-  var target = this.paths.views + '/' + name + '.' + this.language,
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.views + '/' + name + '.' + this.language;
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('view.handlebars', {
@@ -91,8 +93,9 @@ ThoraxGenerator.prototype.view = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype['collection-view'] = function(name, moduleName) {
-  var target = this.paths.views + '/' + name + '.' + this.language,
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.views + '/' + name + '.' + this.language;
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('collection-view.handlebars', {
@@ -104,8 +107,9 @@ ThoraxGenerator.prototype['collection-view'] = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.collection = function(name, moduleName) {
-  var target = this.paths.collections + '/' + name + '.' + this.language,
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.collections + '/' + name + '.' + this.language;
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('collection.handlebars', {
@@ -114,8 +118,9 @@ ThoraxGenerator.prototype.collection = function(name, moduleName) {
 };
 
 ThoraxGenerator.prototype.model = function(name, moduleName) {
-  var target = this.paths.models + '/' + name + '.' + this.language,
-      moduleName = moduleName || name.split('/').shift();
+  var target = this.paths.models + '/' + name + '.' + this.language;
+  moduleName = moduleName || name.split('/').shift();
+
   ensureModule.call(this, moduleName);
   addScript.call(this, moduleName, target);
   this.write(target, this.render('model.handlebars', {
@@ -131,7 +136,7 @@ ThoraxGenerator.prototype.template = function(name) {
 ThoraxGenerator.prototype.save = function() {
   if (this._modifyLumbarJSON) {
     console.log('    Updated ' + pathWithoutProjectDir(this._lumbarJSONPath));
-    fs.writeFileSync(this._lumbarJSONPath, JSON.stringify(this.lumbarJSON, null, 2));
+    fs.writeFileSync(this._lumbarJSONPath, this.lumbarJSON.toString());
   }
 };
 
@@ -148,7 +153,7 @@ ThoraxGenerator.prototype.write = function(file, contents) {
 
 ThoraxGenerator.prototype.render = function(file, context) {
   context = context || {};
-  context.applicationName = this.lumbarJSON.application.name;
+  context.applicationName = this.lumbarJSON.get('application').get('name');
   return handlebars.compile(fs.readFileSync(path.join(this._generatorsPath, file)).toString())(context);
 };
 
@@ -159,14 +164,14 @@ function pathWithoutProjectDir(filePath) {
 function addScript(moduleName, script) {
   if (moduleName) {
     ensureModuleInJSON.call(this, moduleName);
-    this.lumbarJSON.modules[moduleName].scripts.push(script);
+    this.lumbarJSON.get('modules').get(moduleName).get('scripts').push(script);
   }
 }
 
 function addStyle(moduleName, style) {
   if (moduleName) {
     ensureModuleInJSON.call(this, moduleName);
-    this.lumbarJSON.modules[moduleName].styles.push(style);
+    this.lumbarJSON.get('modules').get(moduleName).get('styles').push(style);
   }
 }
 
@@ -181,11 +186,14 @@ function ensureModule(moduleName, preventRouterInit) {
 }
 
 function ensureModuleInJSON(moduleName) {
-  if (!this.lumbarJSON.modules) {
-    this.lumbarJSON.modules = {};
+  var modules = this.lumbarJSON.get('modules');
+  if (!modules) {
+    modules = {};
+    this.lumbarJSON.set('modules', modules);
   }
-  if (!this.lumbarJSON.modules[moduleName]) {
-    this.lumbarJSON.modules[moduleName] = defaultModuleJSON();
+
+  if (!modules.get(moduleName)) {
+    modules.set(moduleName, defaultModuleJSON());
     return false;
   }
   return true;
@@ -216,7 +224,7 @@ function mkdirsSync(dirname) {
     }
   }
   for (var i = pathsNotFound.length - 1; i >- 1; i--) {
-    var fn = pathsNotFound[i];
+    fn = pathsNotFound[i];
     fs.mkdirSync(fn, mode);
   }
   return pathsNotFound;
