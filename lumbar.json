@@ -5,21 +5,15 @@
   },
   "modules": {
     "base": {
+      "mixins": [
+        "lumbar-loader",
+        "thorax-dep-jquery",
+        "thorax",
+        "thorax-loading",
+      ],
       "scripts": [
-        {"src": "bower_components/underscore/underscore.js", "global": true},
-        {"src": "bower_components/jquery/jquery.js", "global": true},
-        {"src": "bower_components/backbone/backbone.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/script.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/queue.js", "global": true},
-        {"src": "bower_components/lumbar-loader/local-cache.js", "global": true},
-        {"src": "bower_components/handlebars/handlebars.js", "global": true},
         {"src": "bower_components/bootstrap/js/bootstrap.js", "global": true},
-        "bower_components/thorax/thorax.js",
-        "bower_components/lumbar-loader/lumbar-loader.js",
-        "bower_components/lumbar-loader/lumbar-loader-events.js",
-        "bower_components/lumbar-loader/lumbar-loader-standard.js",
-        "bower_components/lumbar-loader/lumbar-loader-backbone.js",
-        {"module-map": true},
+        {"src": "lumbar-loader-backbone.js", "bower": "lumbar-loader"},
         "js/init.js",
         "js/model.js",
         "js/collection.js",
@@ -31,8 +25,8 @@
       ]
     }
   },
+
   "templates": {
-    "template": "Handlebars.templates['{{{without-extension name}}}'] = {{handlebarsCall}}({{{data}}});",
     "root": "templates/",
     "auto-include": {
       "js/views/(.*)\\.(js|coffee)": [
@@ -42,13 +36,6 @@
       ]
     },
     "knownHelpers": [
-      "layout-element",
-      "view",
-      "template",
-      "collection",
-      "empty",
-      "loading",
-      "url"
     ],
     "js/init.js": [
       "templates/application.handlebars"

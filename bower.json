@@ -2,13 +2,13 @@
   "name": "thorax-seed",
   "version": "0.0.1",
   "dependencies": {
-    "thorax": "2.1.0",
+    "zepto": "1.x.x",
     "jquery": "1.9.0",
-    "underscore": "1.4.4",
-    "zepto": "1.0.0",
-    "handlebars": "1.0.0",
+    "underscore": "1.x.x",
+    "handlebars": "2.x.x",
     "backbone": "1.0.0",
-    "lumbar-loader": "walmartlabs/lumbar-loader#~1.1.2",
+    "thorax": "walmartlabs/thorax#3.x.x",
+    "lumbar-loader": "2.x.x",
     "bootstrap": "components/bootstrap#~2.3.2"
   }
 }
