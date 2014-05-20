@@ -22,6 +22,9 @@
       "styles": [
         "stylesheets/base.css",
         "bower_components/bootstrap/css/bootstrap.css"
+      ],
+      "static": [
+        {"src": "public/index.html", "dest": "index.html", "update-externals": true, "root": true}
       ]
     }
   },
@@ -40,5 +43,6 @@
     "js/init.js": [
       "templates/application.handlebars"
     ]
-  }
+  },
+  "loadPrefix": "/r/",
 }

@@ -1,12 +1,10 @@
 module.exports = function(grunt) {
   var port = 8000,
-      publicDir = './public',
-      jsDir = publicDir + '/modules',
+      buildDir = './build',
       lumbarFile = './lumbar.json',
       hostname = 'localhost';
   
-  grunt.file.mkdir(publicDir);
-  grunt.file.mkdir(jsDir);
+  grunt.file.mkdir(buildDir);
 
   grunt.initConfig({
     // create a static webserver
@@ -14,7 +12,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           hostname: hostname,
-          base: publicDir,
+          base: buildDir,
           port: port
         }
       }
@@ -24,7 +22,7 @@ module.exports = function(grunt) {
       // and initial open are run, code is built
       init: {
         build: lumbarFile,
-        output: jsDir
+        output: buildDir
       },
       // a long running process that will watch
       // for updates, to include another long
@@ -33,7 +31,7 @@ module.exports = function(grunt) {
       watch: {
         background: false,
         watch: lumbarFile,
-        output: jsDir
+        output: buildDir
       }
     },
     // allows files to be opened when the
