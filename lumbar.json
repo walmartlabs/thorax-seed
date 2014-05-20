@@ -26,6 +26,19 @@
       "static": [
         {"src": "public/index.html", "dest": "index.html", "update-externals": true, "root": true}
       ]
+    },
+    "repos": {
+      "serverRender": true,
+      "routes": {
+        "": "index"
+      },
+      "scripts": [
+        "js/routers/repos.js",
+        "js/collections/repos.js",
+        "js/views/repos/index.js"
+      ],
+      "styles": [
+      ]
     }
   },
 
