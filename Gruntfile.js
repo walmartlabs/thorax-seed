@@ -62,7 +62,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
   grunt.loadNpmTasks('hula-hoop');
-  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', [
     'ensure-installed',
