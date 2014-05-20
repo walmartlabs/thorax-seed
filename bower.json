@@ -9,6 +9,6 @@
     "backbone": "1.0.0",
     "thorax": "walmartlabs/thorax#3.x.x",
     "lumbar-loader": "2.x.x",
-    "bootstrap": "components/bootstrap#~2.3.2"
+    "bootstrap": "components/bootstrap#3.x.x"
   }
 }
