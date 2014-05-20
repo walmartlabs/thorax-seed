@@ -39,4 +39,22 @@ server.route(
   })
 );
 
+
+/////////////////////////
+// Offline Hack for Demo
+
+server.route({
+  path: '/data',
+  method: 'GET',
+  handler: {
+    file: __dirname + '/../data.json'
+  },
+  config: {
+    cache: {
+      expiresIn: 5*60*1000
+    }
+  }
+});
+
+
 server.start();
