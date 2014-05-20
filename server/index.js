@@ -19,7 +19,7 @@ server.route([
 
 // Setup the user endpoint routing
 var pageHandler = HulaHoop.endpoints.page(appName, {
-  host: 'foo.com',
+  host: 'localhost:8000',
   resourceRoot: '/r/'
 });
 
