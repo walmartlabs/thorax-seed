@@ -25,20 +25,25 @@ Application.initBackboneLoader(Application, function(type, module) {
   // You have failed to load the module. Let the world know.
 });
 
-$(function() {
+$(window).ready(function() {
+  // Check to see if we have rendered content that we can try to restore
+  var appEl = $('[data-view-name="application"]');
+  if (appEl.length) {
+    // Restore the application view explicitly
+    Application.restore(appEl);
+  } else {
+    // We are starting with a blank page, render a new element
+    $('body').append(Application.el);
+    Application.render();
+  }
+
   // Application and other templates included by the base
   // Application may want to use the link and url helpers
   // which use hasPushstate, etc. so setup history, then
   // render, then dispatch
   Backbone.history.start({
-    pushState: false,
-    root: '/',
-    silent: true
+    pushState: true,
+    root: '/'
   });
-  // TODO: can remove after this is fixed:
-  // https://github.com/walmartlabs/lumbar/issues/84
-  Application.template = Thorax.templates.application;
-  Application.appendTo('body');
-  Backbone.history.loadUrl();
 });
 

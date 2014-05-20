@@ -12,7 +12,7 @@
         "thorax-loading",
       ],
       "scripts": [
-        {"src": "bower_components/bootstrap/js/bootstrap.js", "global": true},
+        {"src": "bower_components/bootstrap/js/bootstrap.js", "global": true, "server": false},
         {"src": "lumbar-loader-backbone.js", "bower": "lumbar-loader"},
         "js/init.js",
         "js/model.js",
@@ -31,6 +31,9 @@
 
   "templates": {
     "root": "templates/",
+    "precompile": {
+      "data": true
+    },
     "auto-include": {
       "js/views/(.*)\\.(js|coffee)": [
         "templates/$1.handlebars",
@@ -39,10 +42,12 @@
       ]
     },
     "knownHelpers": [
+      // Place any helpers created in the app here to optimize their use
     ],
     "js/init.js": [
       "templates/application.handlebars"
     ]
   },
   "loadPrefix": "/r/",
+  "server": true
 }

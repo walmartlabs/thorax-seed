@@ -17,6 +17,10 @@
     "test": "node ./node_modules/grunt-cli/bin/grunt test"
   },
   "engines": {
-    "node" : ">=0.8.0"
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "hula-hoop": "0.0.1",
+    "hapi": "^5.0.0"
   }
 }

@@ -7,16 +7,6 @@ module.exports = function(grunt) {
   grunt.file.mkdir(buildDir);
 
   grunt.initConfig({
-    // create a static webserver
-    connect: {
-      server: {
-        options: {
-          hostname: hostname,
-          base: buildDir,
-          port: port
-        }
-      }
-    },
     lumbar: {
       // performs an initial build so when tests
       // and initial open are run, code is built
@@ -32,6 +22,14 @@ module.exports = function(grunt) {
         background: false,
         watch: lumbarFile,
         output: buildDir
+      }
+    },
+    'hapi-routes': {
+      map: {
+        options: {
+          package: 'web',
+          dest: buildDir + '/module-map.json'
+        }
       }
     },
     // allows files to be opened when the
@@ -50,7 +48,11 @@ module.exports = function(grunt) {
       }
     }
   });
-  
+
+  grunt.registerTask('hapi-server', function() {
+    // Self running.
+    require('./server');
+  });
   grunt.registerTask('open-browser', function() {
     var open = require('open');
     open('http://' + hostname + ':' + port);
@@ -59,13 +61,15 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
+  grunt.loadNpmTasks('hula-hoop');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', [
     'ensure-installed',
     'thorax:inspector',
+    'hapi-routes',
     'lumbar:init',
-    'connect:server',
+    'hapi-server',
     'open-browser',
     'lumbar:watch'
   ]);
