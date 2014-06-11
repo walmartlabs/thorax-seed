@@ -6,7 +6,7 @@
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt": "~0.4",
     "grunt-cli": "0.1.6",
-    "lumbar": "3.x.x",
+    "lumbar": "4.x.x",
     "thorax-inspector": "~0.2.4",
     "open": "0.0.3",
     "bower": "~0.10"
@@ -19,7 +19,7 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "hula-hoop": "0.0.1",
+    "hula-hoop": "0.1.x",
     "hapi": "^5.0.0"
   }
 }
