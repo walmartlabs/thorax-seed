@@ -233,4 +233,4 @@ More Seeds
 ----------
 
 - [Todos](https://github.com/eastridge/thorax-seed-todos) : The project in the state at the end of the screencast (and described in this document)
-- [Mocha](https://github.com/eastridge/thorax-seed-mocha) : Blank seed with a [Mocha](http://visionmedia.github.com/mocha/) test harness setup
+- [Mocha](https://github.com/eastridge/thorax-seed-mocha) : Blank seed with a [Mocha](http://mochajs.org/) test harness setup
