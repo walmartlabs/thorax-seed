@@ -19,7 +19,7 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "hula-hoop": "0.1.x",
+    "hula-hoop": "0.9.0",
     "hapi": "^5.0.0"
   }
 }
